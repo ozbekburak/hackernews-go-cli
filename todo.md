@@ -1,4 +1,6 @@
-#### create story, comment, jobs, ask filter #### get last post 
+#### create story, comment, jobs, ask filter 
+
+#### get last post 
 
 #### create flag for last post 
 
@@ -6,7 +8,7 @@
 
 #### diğer model tipleri de eklenecek; comment, jobs, ask etc.
 
-[ ] Create all model
-[ ] Separate response of models
-[ ] Create pretty string format for all models
+- [ ] Create all model
+- [ ] Separate response of models
+- [ ] Create pretty string format for all models
 
