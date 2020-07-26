@@ -1,7 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 )
@@ -12,5 +14,17 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	fmt.Println(response)
+	GetLastItem(*response)
+
+}
+
+// GetLastItem returns the ID of last posted item
+func GetLastItem(response http.Response) {
+	returnedData, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	var maxItem int
+	json.Unmarshal(returnedData, &maxItem)
+	fmt.Println(maxItem)
 }
