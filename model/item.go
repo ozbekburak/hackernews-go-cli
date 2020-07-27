@@ -41,3 +41,11 @@ func (i Item) FormattedJob() string {
 		i.By, i.ID, i.Score, i.Text, i.Title, i.URL)
 	return job
 }
+
+// FormattedComment formats our response to show meaningful output to user
+func (i Item) FormattedComment() string {
+	comment := fmt.Sprintf(
+		"\nBy: %s\nID: %d\nParentID: %d\nText: %s\n",
+		i.By, i.ID, i.Parent, i.Text)
+	return comment
+}
