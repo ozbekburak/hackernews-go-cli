@@ -17,22 +17,29 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	GetMaxID(*response)
+	GetLastItem(GetMaxItemID(*response))
 
 }
 
-// GetMaxID returns the ID of last posted item
-func GetMaxID(response http.Response) {
+// GetMaxItemID returns the ID of last posted item
+func GetMaxItemID(response http.Response) int {
 	returnedData, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	var maxItem int
-	json.Unmarshal(returnedData, &maxItem)
+	var maxItemID int
+	json.Unmarshal(returnedData, &maxItemID)
+	return maxItemID
+
 }
 
 // GetLastItem brings the last posted item which can be in different types like story, job, comment etc.
 func GetLastItem(maxID int) {
-	lastItem := fmt.Sprintf("%s%d%s", BaseURL, maxID, ".json")
+	lastItemURL := fmt.Sprintf("%s%d%s", BaseURL, maxID, ".json")
+	lastItem, err := http.Get(lastItemURL)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	fmt.Println(lastItem)
 
 }
