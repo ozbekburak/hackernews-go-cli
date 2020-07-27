@@ -23,8 +23,9 @@ func main() {
 
 }
 
-func DisplayItem() {
-
+// DisplayItem displays our output that fetched from last item
+func DisplayItem(output string, typeOfPost string, itemURL string) {
+	fmt.Printf("Type: %s\nURL: %s\nContent: %s", typeOfPost, itemURL, output)
 }
 
 // GetMaxItemID returns the ID of last posted item
@@ -58,20 +59,20 @@ func GetLastItem(maxID int) {
 	}
 	switch ItemResponse.Type {
 	case "story":
-		fmt.Printf("Type: %v\nURL: %v\n", ItemResponse.Type, lastItemURL)
-		fmt.Println(model.Item.FormattedStory(ItemResponse))
+		story := model.Item.FormattedStory(ItemResponse)
+		DisplayItem(story, ItemResponse.Type, lastItemURL)
 	case "poll":
-		fmt.Printf("Type: %v\nURL: %v\n", ItemResponse.Type, lastItemURL)
-		fmt.Println(model.Item.FormattedPoll(ItemResponse))
+		poll := model.Item.FormattedPoll(ItemResponse)
+		DisplayItem(poll, ItemResponse.Type, lastItemURL)
 	case "job":
-		fmt.Printf("Type: %v\nURL: %v\n", ItemResponse.Type, lastItemURL)
-		fmt.Println(model.Item.FormattedJob(ItemResponse))
+		job := model.Item.FormattedJob(ItemResponse)
+		DisplayItem(job, ItemResponse.Type, lastItemURL)
 	case "comment":
-		fmt.Printf("Type: %v\nURL: %v\n", ItemResponse.Type, lastItemURL)
-		fmt.Println(model.Item.FormattedComment(ItemResponse))
+		comment := model.Item.FormattedComment(ItemResponse)
+		DisplayItem(comment, ItemResponse.Type, lastItemURL)
 	case "ask":
-		fmt.Printf("Type: %v\nURL: %v\n", ItemResponse.Type, lastItemURL)
-		fmt.Println(model.Item.FormattedAsk(ItemResponse))
+		ask := model.Item.FormattedAsk(ItemResponse)
+		DisplayItem(ask, ItemResponse.Type, lastItemURL)
 	default:
 		fmt.Println("Returned no type! Is it possible?")
 	}
