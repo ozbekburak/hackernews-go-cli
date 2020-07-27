@@ -49,3 +49,11 @@ func (i Item) FormattedComment() string {
 		i.By, i.ID, i.Parent, i.Text)
 	return comment
 }
+
+// FormattedAsk formats our response to show meaningful output to user
+func (i Item) FormattedAsk() string {
+	ask := fmt.Sprintf(
+		"\nBy: %s\nComment Count: %d\nID: %d\nScore: %d\nText: %s\nTitle: %s\n",
+		i.By, i.Descendants, i.ID, i.Score, i.Text, i.Title)
+	return ask
+}
