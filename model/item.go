@@ -33,3 +33,11 @@ func (i Item) FormattedPoll() string {
 		i.By, i.Descendants, i.ID, i.Score, i.Text, i.Title)
 	return poll
 }
+
+// FormattedJob formats our response to show meaningful output to user
+func (i Item) FormattedJob() string {
+	job := fmt.Sprintf(
+		"\nBy: %s\nID: %d\nScore: %d\nText: %s\nTitle: %s\nURL: %s\n",
+		i.By, i.ID, i.Score, i.Text, i.Title, i.URL)
+	return job
+}
