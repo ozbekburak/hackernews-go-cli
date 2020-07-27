@@ -25,3 +25,11 @@ func (i Item) FormattedStory() string {
 		i.By, i.ID, i.Descendants, i.Score, i.Title, i.URL)
 	return story
 }
+
+// FormattedPoll formats our response to show meaningful output to user
+func (i Item) FormattedPoll() string {
+	poll := fmt.Sprintf(
+		"\nBy: %s\nComment Count: %d\nID: %d\nScore: %d\nText: %s\nTitle: %s\n",
+		i.By, i.Descendants, i.ID, i.Score, i.Text, i.Title)
+	return poll
+}
