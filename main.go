@@ -52,6 +52,28 @@ func GetLastItem(maxID int) {
 	if error != nil {
 		fmt.Println("Something happened unmarshalling: ", error)
 	}
-	fmt.Println(ItemResponse.Type)
-
+	switch ItemResponse.Type {
+	case "story":
+		fmt.Printf("Type: %v\n", ItemResponse.Type)
+		fmt.Printf("URL: %v\n", lastItemURL)
+		fmt.Println(model.Item.FormattedStory(ItemResponse))
+	case "poll":
+		fmt.Printf("Type: %v\n", ItemResponse.Type)
+		fmt.Printf("URL: %v\n", lastItemURL)
+		fmt.Println(model.Item.FormattedPoll(ItemResponse))
+	case "job":
+		fmt.Printf("Type: %v\n", ItemResponse.Type)
+		fmt.Printf("URL: %v\n", lastItemURL)
+		fmt.Println(model.Item.FormattedJob(ItemResponse))
+	case "comment":
+		fmt.Printf("Type: %v\n", ItemResponse.Type)
+		fmt.Printf("URL: %v\n", lastItemURL)
+		fmt.Println(model.Item.FormattedComment(ItemResponse))
+	case "ask":
+		fmt.Printf("Type: %v\n", ItemResponse.Type)
+		fmt.Printf("URL: %v\n", lastItemURL)
+		fmt.Println(model.Item.FormattedAsk(ItemResponse))
+	default:
+		fmt.Println("Returned no type! Is it possible?")
+	}
 }
