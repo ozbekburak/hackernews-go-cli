@@ -14,12 +14,16 @@ import (
 const BaseURL = "https://hacker-news.firebaseio.com/v0/item/"
 
 func main() {
-	fmt.Println("Hackernews cli application that written in Go!")
+	fmt.Println("Hackernews cli application that written in Go!\n---------------")
 	response, err := http.Get("https://hacker-news.firebaseio.com/v0/maxitem.json")
 	if err != nil {
 		log.Fatalln(err)
 	}
 	GetLastItem(GetMaxItemID(*response))
+
+}
+
+func DisplayItem() {
 
 }
 
@@ -54,24 +58,19 @@ func GetLastItem(maxID int) {
 	}
 	switch ItemResponse.Type {
 	case "story":
-		fmt.Printf("Type: %v\n", ItemResponse.Type)
-		fmt.Printf("URL: %v\n", lastItemURL)
+		fmt.Printf("Type: %v\nURL: %v\n", ItemResponse.Type, lastItemURL)
 		fmt.Println(model.Item.FormattedStory(ItemResponse))
 	case "poll":
-		fmt.Printf("Type: %v\n", ItemResponse.Type)
-		fmt.Printf("URL: %v\n", lastItemURL)
+		fmt.Printf("Type: %v\nURL: %v\n", ItemResponse.Type, lastItemURL)
 		fmt.Println(model.Item.FormattedPoll(ItemResponse))
 	case "job":
-		fmt.Printf("Type: %v\n", ItemResponse.Type)
-		fmt.Printf("URL: %v\n", lastItemURL)
+		fmt.Printf("Type: %v\nURL: %v\n", ItemResponse.Type, lastItemURL)
 		fmt.Println(model.Item.FormattedJob(ItemResponse))
 	case "comment":
-		fmt.Printf("Type: %v\n", ItemResponse.Type)
-		fmt.Printf("URL: %v\n", lastItemURL)
+		fmt.Printf("Type: %v\nURL: %v\n", ItemResponse.Type, lastItemURL)
 		fmt.Println(model.Item.FormattedComment(ItemResponse))
 	case "ask":
-		fmt.Printf("Type: %v\n", ItemResponse.Type)
-		fmt.Printf("URL: %v\n", lastItemURL)
+		fmt.Printf("Type: %v\nURL: %v\n", ItemResponse.Type, lastItemURL)
 		fmt.Println(model.Item.FormattedAsk(ItemResponse))
 	default:
 		fmt.Println("Returned no type! Is it possible?")
