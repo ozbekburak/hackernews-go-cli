@@ -6,6 +6,8 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+
+	"github.com/hackernews-go-cli/model"
 )
 
 // BaseURL helps us to create customizable request
@@ -35,11 +37,21 @@ func GetMaxItemID(response http.Response) int {
 
 // GetLastItem brings the last posted item which can be in different types like story, job, comment etc.
 func GetLastItem(maxID int) {
+	var ItemResponse model.Item
+
 	lastItemURL := fmt.Sprintf("%s%d%s", BaseURL, maxID, ".json")
 	lastItem, err := http.Get(lastItemURL)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	fmt.Println(lastItem)
+	bodyLastItem, err := ioutil.ReadAll(lastItem.Body)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	error := json.Unmarshal(bodyLastItem, &ItemResponse)
+	if error != nil {
+		fmt.Println("Something happened unmarshalling: ", error)
+	}
+	fmt.Println(ItemResponse.Type)
 
 }
