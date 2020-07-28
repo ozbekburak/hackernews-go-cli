@@ -3,6 +3,8 @@ package model
 import (
 	"fmt"
 	"html" // html.UnescapeString unescapes entities like "&lt;" to become "<".
+	"strconv"
+	"time"
 )
 
 // Item struct represents the model of our response.
@@ -59,4 +61,13 @@ func (i Item) FormattedAsk() string {
 		"\nBy: %s\nComment Count: %d\nID: %d\nScore: %d\nText: %s\nTitle: %s\n",
 		i.By, i.Descendants, i.ID, i.Score, html.UnescapeString(i.Text), i.Title)
 	return ask
+}
+
+// FormattedTime function converts epoch time to human readable format
+func (i Item) FormattedTime(epoch int64) time.Time {
+	a, err := strconv.ParseInt(string(epoch), 10, 64)
+	if err != nil {
+		panic(err)
+	}
+	return time.Unix(a, 0)
 }
