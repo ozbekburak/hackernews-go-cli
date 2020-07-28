@@ -15,19 +15,18 @@ const BaseURL = "https://hacker-news.firebaseio.com/v0/item/"
 
 // DisplayItem displays our output that fetched from last item
 func DisplayItem(output string, typeOfPost string, itemURL string) {
-	fmt.Printf("Type: %s\nURL: %s\nContent: %s", typeOfPost, itemURL, output)
+	fmt.Printf("Type: %s\nURL: %s\n-----------%s", typeOfPost, itemURL, output)
 }
 
 // GetMaxItemID returns the ID of last posted item
 func GetMaxItemID(response http.Response) int {
+	var maxItemID int
 	data, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	var maxItemID int
 	json.Unmarshal(data, &maxItemID)
 	return maxItemID
-
 }
 
 // GetLastItem brings the last posted item which can be in different types like story, job, comment etc.
@@ -40,6 +39,7 @@ func GetLastItem(response http.Response) {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	defer lastItem.Body.Close()
 	bodyLastItem, err := ioutil.ReadAll(lastItem.Body)
 	if err != nil {
 		log.Fatalln(err)
