@@ -33,7 +33,7 @@ func (i Item) FormattedStory() string {
 func (i Item) FormattedPoll() string {
 	poll := fmt.Sprintf(
 		"\nBy: %s\nComment Count: %d\nID: %d\nScore: %d\nText: %s\nTitle: %s\n",
-		i.By, i.Descendants, i.ID, i.Score, i.Text, i.Title)
+		i.By, i.Descendants, i.ID, i.Score, html.UnescapeString(i.Text), i.Title)
 	return poll
 }
 
@@ -41,7 +41,7 @@ func (i Item) FormattedPoll() string {
 func (i Item) FormattedJob() string {
 	job := fmt.Sprintf(
 		"\nBy: %s\nID: %d\nScore: %d\nText: %s\nTitle: %s\nURL: %s\n",
-		i.By, i.ID, i.Score, i.Text, i.Title, i.URL)
+		i.By, i.ID, i.Score, html.UnescapeString(i.Text), i.Title, i.URL)
 	return job
 }
 
@@ -57,6 +57,6 @@ func (i Item) FormattedComment() string {
 func (i Item) FormattedAsk() string {
 	ask := fmt.Sprintf(
 		"\nBy: %s\nComment Count: %d\nID: %d\nScore: %d\nText: %s\nTitle: %s\n",
-		i.By, i.Descendants, i.ID, i.Score, i.Text, i.Title)
+		i.By, i.Descendants, i.ID, i.Score, html.UnescapeString(i.Text), i.Title)
 	return ask
 }
