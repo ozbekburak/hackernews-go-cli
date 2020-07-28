@@ -1,6 +1,9 @@
 package model
 
-import "fmt"
+import (
+	"fmt"
+	"html" // html.UnescapeString unescapes entities like "&lt;" to become "<".
+)
 
 // Item struct represents the model of our response.
 type Item struct {
@@ -46,7 +49,7 @@ func (i Item) FormattedJob() string {
 func (i Item) FormattedComment() string {
 	comment := fmt.Sprintf(
 		"\nBy: %s\nID: %d\nParentID: %d\nText: %s\n",
-		i.By, i.ID, i.Parent, i.Text)
+		i.By, i.ID, i.Parent, html.UnescapeString(i.Text))
 	return comment
 }
 
