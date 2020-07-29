@@ -20,7 +20,13 @@ func main() {
 		if err != nil {
 			log.Fatalln(err)
 		}
+		defer response.Body.Close()
 		client.GetLastItem(BaseURL, *response)
 	}
-	fmt.Println("You need to use arguments")
+
+	topResponse, err := http.Get("https://hacker-news.firebaseio.com/v0/topstories.json")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	fmt.Println(topResponse.Body)
 }
