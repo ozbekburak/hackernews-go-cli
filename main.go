@@ -1,8 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 
@@ -24,9 +26,19 @@ func main() {
 		client.GetLastItem(BaseURL, *response)
 	}
 
+	getTopStories := flag.Bool("top", false, "display top stories, you can pass arguments until 500. default first 100 stories will shown.")
+
 	topResponse, err := http.Get("https://hacker-news.firebaseio.com/v0/topstories.json")
 	if err != nil {
 		log.Fatalln(err)
 	}
 	fmt.Println(topResponse.Body)
+	topStory, err := ioutil.ReadAll(topResponse.Body)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	var topStories []int64
+	json.Unmarshal(topStory, &topStories)
+	fmt.Println(topStories[0])
+
 }
