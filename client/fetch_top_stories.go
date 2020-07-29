@@ -9,7 +9,12 @@ import (
 )
 
 // GetTopStories returns top 100 story
-func GetTopStories(num int, response http.Response) {
+func GetTopStories(num int) {
+	response, err := http.Get("https://hacker-news.firebaseio.com/v0/topstories.json")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer response.Body.Close()
 	topStory, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		log.Fatalln(err)
