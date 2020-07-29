@@ -1,10 +1,7 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
-	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 
@@ -32,13 +29,8 @@ func main() {
 		if err != nil {
 			log.Fatalln(err)
 		}
-		topStory, err := ioutil.ReadAll(response.Body)
-		if err != nil {
-			log.Fatalln(err)
-		}
-		var topStories []int64
-		json.Unmarshal(topStory, &topStories)
-		fmt.Println(topStories)
+		defer response.Body.Close()
+		client.GetTop100Stories(*response)
 	}
 
 }
