@@ -30,7 +30,7 @@ func main() {
 			log.Fatalln(err)
 		}
 		defer response.Body.Close()
-		client.GetTop100Stories(*response)
+		client.GetTopStories(10, *response)
 	}
 
 }

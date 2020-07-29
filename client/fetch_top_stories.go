@@ -8,13 +8,15 @@ import (
 	"net/http"
 )
 
-// GetTop100Stories returns top 100 story
-func GetTop100Stories(response http.Response) {
+// GetTopStories returns top 100 story
+func GetTopStories(num int, response http.Response) {
 	topStory, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	var topStories []int64
 	json.Unmarshal(topStory, &topStories)
-	fmt.Println(topStories)
+	for i := 0; i < num; i++ {
+		fmt.Println(topStories[i])
+	}
 }
