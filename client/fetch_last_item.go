@@ -28,39 +28,43 @@ func GetMaxItemID(response http.Response) int {
 
 // GetLastItem brings the last posted item which can be in different types like story, job, comment etc.
 func GetLastItem(BaseURL string, response http.Response) {
-	var ItemResponse model.Item
 	maxID := GetMaxItemID(response)
+	GetItem(BaseURL, maxID, response)
+}
 
-	lastItemURL := fmt.Sprintf("%s%d%s", BaseURL, maxID, ".json")
-	lastItem, err := http.Get(lastItemURL)
+// GetItem function returns the item that related ID
+func GetItem(BaseURL string, itemID int, response http.Response) {
+	var ItemResponse model.Item
+	itemURL := fmt.Sprintf("%s%d%s", BaseURL, itemID, ".json")
+	item, err := http.Get(itemURL)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	defer lastItem.Body.Close()
-	bodyLastItem, err := ioutil.ReadAll(lastItem.Body)
+	defer item.Body.Close()
+	itemBody, err := ioutil.ReadAll(item.Body)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	error := json.Unmarshal(bodyLastItem, &ItemResponse)
+	error := json.Unmarshal(itemBody, &ItemResponse)
 	if error != nil {
-		fmt.Println("Something happened unmarshalling: ", error)
+		fmt.Println("Something bad happened: ", error)
 	}
 	switch ItemResponse.Type {
 	case "story":
 		story := model.Item.FormattedStory(ItemResponse)
-		DisplayItem(story, ItemResponse.Type, lastItemURL)
+		DisplayItem(story, ItemResponse.Type, itemURL)
 	case "poll":
 		poll := model.Item.FormattedPoll(ItemResponse)
-		DisplayItem(poll, ItemResponse.Type, lastItemURL)
+		DisplayItem(poll, ItemResponse.Type, itemURL)
 	case "job":
 		job := model.Item.FormattedJob(ItemResponse)
-		DisplayItem(job, ItemResponse.Type, lastItemURL)
+		DisplayItem(job, ItemResponse.Type, itemURL)
 	case "comment":
 		comment := model.Item.FormattedComment(ItemResponse)
-		DisplayItem(comment, ItemResponse.Type, lastItemURL)
+		DisplayItem(comment, ItemResponse.Type, itemURL)
 	case "ask":
 		ask := model.Item.FormattedAsk(ItemResponse)
-		DisplayItem(ask, ItemResponse.Type, lastItemURL)
+		DisplayItem(ask, ItemResponse.Type, itemURL)
 	default:
 		fmt.Println("Returned no type! Is it possible?")
 	}
