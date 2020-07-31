@@ -2,8 +2,6 @@ package main
 
 import (
 	"flag"
-	"log"
-	"net/http"
 
 	"github.com/hackernews-go-cli/client"
 )
@@ -17,12 +15,7 @@ func main() {
 	flag.IntVar(&storyCount, "top", 5, "display top stories, you can pass arguments until 500")
 	flag.Parse()
 	if *getLastItem {
-		response, err := http.Get("https://hacker-news.firebaseio.com/v0/maxitem.json")
-		if err != nil {
-			log.Fatalln(err)
-		}
-		defer response.Body.Close()
-		client.GetLastItem(BaseURL, *response)
+		client.GetLastItem()
 	}
 	if storyCount > 0 && storyCount <= 500 {
 		client.GetTopStories(storyCount)

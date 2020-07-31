@@ -27,16 +27,23 @@ func GetMaxItemID(response http.Response) int {
 }
 
 // GetLastItem brings the last posted item which can be in different types like story, job, comment etc.
-func GetLastItem(BaseURL string, response http.Response) {
-	maxID := GetMaxItemID(response)
-	GetItem(BaseURL, maxID, response)
+func GetLastItem() {
+	lastItemURL := "https://hacker-news.firebaseio.com/v0/maxitem.json"
+	response, err := http.Get(lastItemURL)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer response.Body.Close()
+	maxID := GetMaxItemID(*response)
+	GetItem(lastItemURL, maxID)
 }
 
 // GetItem function returns the item that related ID
-func GetItem(BaseURL string, itemID int, response http.Response) {
+func GetItem(BaseURL string, itemID int) {
 	var ItemResponse model.Item
 	itemURL := fmt.Sprintf("%s%d%s", BaseURL, itemID, ".json")
 	item, err := http.Get(itemURL)
+
 	if err != nil {
 		log.Fatalln(err)
 	}
