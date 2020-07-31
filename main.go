@@ -12,8 +12,10 @@ import (
 const BaseURL = "https://hacker-news.firebaseio.com/v0/item/"
 
 func main() {
+	var storyCount int
 	getLastItem := flag.Bool("last", false, "display last post, it can be story, comment, job, poll or ask")
-	storyCount := flag.Int("top", int(100), "display top stories, you can pass arguments until 500. default first 100 stories will shown.")
+	//storyCount := flag.Int("top", 5, "display top stories, you can pass arguments until 500.")
+	flag.IntVar(&storyCount, "top", 5, "display top stories, you can pass arguments until 500")
 	flag.Parse()
 	if *getLastItem {
 		response, err := http.Get("https://hacker-news.firebaseio.com/v0/maxitem.json")
@@ -23,8 +25,7 @@ func main() {
 		defer response.Body.Close()
 		client.GetLastItem(BaseURL, *response)
 	}
-	if *storyCount > 0 {
-		client.GetTopStories(*storyCount)
+	if storyCount > 0 {
+		client.GetTopStories(storyCount)
 	}
-
 }
