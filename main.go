@@ -25,7 +25,7 @@ func main() {
 		defer response.Body.Close()
 		client.GetLastItem(BaseURL, *response)
 	}
-	if storyCount > 0 {
+	if storyCount > 0 && storyCount <= 500 {
 		client.GetTopStories(storyCount)
 	}
 }
