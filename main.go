@@ -4,6 +4,8 @@ import (
 	"flag"
 	"log"
 
+	"github.com/alexeyco/simpletable"
+
 	"github.com/hackernews-go-cli/client"
 )
 
@@ -33,5 +35,5 @@ func main() {
 	} else {
 		log.Fatalln("You can fetch max 500 item!")
 	}
-
+	table := simpletable.New()
 }
