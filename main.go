@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"log"
 
 	"github.com/hackernews-go-cli/client"
 )
@@ -11,10 +12,14 @@ func main() {
 	getLastItem := flag.Bool("last", false, "display last post, it can be story, comment, job, poll or ask")
 	flag.IntVar(&storyCount, "top", 0, "display top stories, you can pass arguments until 500")
 	flag.Parse()
+
 	if *getLastItem {
 		client.GetLastItem()
 	}
+
 	if storyCount > 0 && storyCount <= 500 {
 		client.GetTopStories(storyCount)
+	} else {
+		log.Fatalln("You can fetch max 500 item!")
 	}
 }
