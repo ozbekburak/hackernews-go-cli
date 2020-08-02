@@ -44,5 +44,13 @@ func main() {
 			{Align: simpletable.AlignCenter, Text: "URL"},
 		},
 	}
+	for _, row := range data {
+		r := []*simpletable.Cell{
+			{Align: simpletable.AlignRight, Text: fmt.Sprintf("%d", row[0].(int))},
+			{Text: row[1].(string)},
+			{Align: simpletable.AlignRight, Text: row[2].(string)},
+		}
+		table.Body.Cells = append(table.Body.Cells, r)
+	}
 	fmt.Println(table)
 }
