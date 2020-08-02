@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-// GetTopStories returns top 100 story
+// GetTopStories returns top stories
 func GetTopStories(num int) {
 	response, err := http.Get("https://hacker-news.firebaseio.com/v0/topstories.json")
 	if err != nil {
