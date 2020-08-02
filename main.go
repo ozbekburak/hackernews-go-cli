@@ -50,7 +50,10 @@ func main() {
 			{Text: row[1].(string)},
 			{Align: simpletable.AlignRight, Text: row[2].(string)},
 		}
+
 		table.Body.Cells = append(table.Body.Cells, r)
 	}
+
+	table.SetStyle(simpletable.StyleRounded)
 	fmt.Println(table)
 }
