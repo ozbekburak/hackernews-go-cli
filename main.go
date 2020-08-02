@@ -36,4 +36,11 @@ func main() {
 		log.Fatalln("You can fetch max 500 item!")
 	}
 	table := simpletable.New()
+	table.Header = &simpletable.Header{
+		Cells: []*simpletable.Cell{
+			{Align: simpletable.AlignCenter, Text: "ID"},
+			{Align: simpletable.AlignCenter, Text: "By"},
+			{Align: simpletable.AlignCenter, Text: "URL"},
+		},
+	}
 }
