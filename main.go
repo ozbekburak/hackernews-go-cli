@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 
 	"github.com/alexeyco/simpletable"
@@ -43,4 +44,5 @@ func main() {
 			{Align: simpletable.AlignCenter, Text: "URL"},
 		},
 	}
+	fmt.Println(table)
 }
