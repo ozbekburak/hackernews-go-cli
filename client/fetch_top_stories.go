@@ -25,6 +25,7 @@ func GetTopStories(num int) {
 		fmt.Println("You have exceeded the max number of item, if you want to list all the item, use this as an argument: ", len(topStories))
 	} else {
 		for i := 0; i < num; i++ {
+			// top storyleri bir arrayde biriktirip o şekilde gönderirsem aynı tabloda görüntüleyebilirim ?
 			GetItem(topStories[i])
 			fmt.Println("**********************")
 		}

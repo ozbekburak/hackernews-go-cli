@@ -36,23 +36,5 @@ func GetItem(itemID int64) {
 	if error != nil {
 		fmt.Println("Something bad happened: ", error)
 	}
-	switch ItemResponse.Type {
-	case "story":
-		story := model.Item.FormattedStory(ItemResponse)
-		DisplayItem(story, ItemResponse.Type, itemURL)
-	case "poll":
-		poll := model.Item.FormattedPoll(ItemResponse)
-		DisplayItem(poll, ItemResponse.Type, itemURL)
-	case "job":
-		job := model.Item.FormattedJob(ItemResponse)
-		DisplayItem(job, ItemResponse.Type, itemURL)
-	case "comment":
-		comment := model.Item.FormattedComment(ItemResponse)
-		DisplayItem(comment, ItemResponse.Type, itemURL)
-	case "ask":
-		ask := model.Item.FormattedAsk(ItemResponse)
-		DisplayItem(ask, ItemResponse.Type, itemURL)
-	default:
-		fmt.Println("Returned no type! Is it possible?")
-	}
+	ShowTable(ItemResponse)
 }
