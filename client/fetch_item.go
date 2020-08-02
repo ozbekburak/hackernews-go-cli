@@ -10,6 +10,9 @@ import (
 	"github.com/hackernews-go-cli/model"
 )
 
+// BaseURL helps us to create customizable request
+const BaseURL = "https://hacker-news.firebaseio.com/v0/item/"
+
 // DisplayItem displays our output that fetched from last item
 func DisplayItem(output string, typeOfPost string, itemURL string) {
 	fmt.Printf("Type: %s\nURL: %s\n-----------%s", typeOfPost, itemURL, output)
@@ -35,11 +38,11 @@ func GetLastItem() {
 	}
 	defer response.Body.Close()
 	maxID := GetMaxItemID(*response)
-	GetItem(lastItemURL, maxID)
+	GetItem(maxID)
 }
 
 // GetItem function returns the item that related ID
-func GetItem(BaseURL string, itemID int) {
+func GetItem(itemID int) {
 	var ItemResponse model.Item
 	itemURL := fmt.Sprintf("%s%d%s", BaseURL, itemID, ".json")
 	item, err := http.Get(itemURL)
