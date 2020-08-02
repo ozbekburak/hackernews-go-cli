@@ -7,6 +7,17 @@ import (
 	"github.com/hackernews-go-cli/client"
 )
 
+var (
+	// data variable includes "id, by, url"
+	data = [][]interface{}{
+		{24028351, "ngram", "https://sliderulemuseum.com/SR_Course.htm"},
+		{24028510, "bilinualcom", "https://www.gitenberg.org/"},
+		{24027487, "DerCommodore", "https://gpu.rocks/"},
+		{24027663, "kkm", "https://www.inkandswitch.com/local-first.html"},
+		{24028289, "zarfius", "https://www.dylanwilson.net/what-i-learned-about-failing-from-my-5-year-indie-game-dev-project/"},
+	}
+)
+
 func main() {
 	var storyCount int
 	getLastItem := flag.Bool("last", false, "display last post, it can be story, comment, job, poll or ask")
@@ -22,4 +33,5 @@ func main() {
 	} else {
 		log.Fatalln("You can fetch max 500 item!")
 	}
+
 }
