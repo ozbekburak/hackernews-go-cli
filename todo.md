@@ -12,3 +12,4 @@
 - [ ] Separate response of models
 - [ ] Create pretty string format for all models
 
+- [ ] Can not figure out how to append items to table
