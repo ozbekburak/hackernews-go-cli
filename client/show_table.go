@@ -8,7 +8,7 @@ import (
 )
 
 // ShowTable creates a table with related data
-func ShowTable(item model.Item) {
+func ShowTable(item []model.Item) {
 	table := simpletable.New()
 	table.Header = &simpletable.Header{
 		Cells: []*simpletable.Cell{
@@ -24,21 +24,21 @@ func ShowTable(item model.Item) {
 			{Align: simpletable.AlignCenter, Text: "URL"},
 		},
 	}
-
-	r := []*simpletable.Cell{
-		{Align: simpletable.AlignRight, Text: fmt.Sprintf("%d", item.ID)},
-		{Text: item.Type},
-		{Text: item.By},
-		{Text: fmt.Sprintf("%d", item.Descendants)},
-		{Text: fmt.Sprintf("%d", item.Score)},
-		{Text: item.Text},
-		{Text: fmt.Sprintf("%d", item.Parent)},
-		{Text: fmt.Sprintf("%v", item.FormattedTime(item.Time))},
-		{Text: item.Title},
-		{Align: simpletable.AlignRight, Text: item.URL},
+	for _, x := range item {
+		r := []*simpletable.Cell{
+			{Align: simpletable.AlignRight, Text: fmt.Sprintf("%d", x.ID)},
+			{Text: x.Type},
+			{Text: x.By},
+			{Text: fmt.Sprintf("%d", x.Descendants)},
+			{Text: fmt.Sprintf("%d", x.Score)},
+			{Text: x.Text},
+			{Text: fmt.Sprintf("%d", x.Parent)},
+			{Text: fmt.Sprintf("%v", x.FormattedTime(x.Time))},
+			{Text: x.Title},
+			{Align: simpletable.AlignRight, Text: x.URL},
+		}
+		table.Body.Cells = append(table.Body.Cells, r)
 	}
-
-	table.Body.Cells = append(table.Body.Cells, r)
 
 	table.SetStyle(simpletable.StyleRounded)
 	fmt.Println(table)
