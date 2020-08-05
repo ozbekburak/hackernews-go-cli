@@ -29,7 +29,6 @@ func GetTopStories(num int) {
 		fmt.Println("You have exceeded the max number of item, if you want to list all the item, use this as an argument: ", len(topStories))
 	} else {
 		for i := 0; i < num; i++ {
-			//GetItem(topStories[i])
 			itemURL := fmt.Sprintf("%s%d%s", BaseURL, topStories[i], ".json")
 			item, err := http.Get(itemURL)
 
