@@ -16,8 +16,6 @@ func ShowTable(item []model.Item) {
 			{Align: simpletable.AlignCenter, Text: "Type"},
 			{Align: simpletable.AlignCenter, Text: "By"},
 			{Align: simpletable.AlignCenter, Text: "Score"},
-			{Align: simpletable.AlignCenter, Text: "Text"},
-			{Align: simpletable.AlignCenter, Text: "Parent"},
 			{Align: simpletable.AlignCenter, Text: "Time"},
 			{Align: simpletable.AlignCenter, Text: "Title"},
 			{Align: simpletable.AlignCenter, Text: "URL"},
@@ -25,15 +23,13 @@ func ShowTable(item []model.Item) {
 	}
 	for _, x := range item {
 		r := []*simpletable.Cell{
-			{Align: simpletable.AlignRight, Text: fmt.Sprintf("%d", x.ID)},
+			{Align: simpletable.AlignLeft, Text: fmt.Sprintf("%d", x.ID)},
 			{Text: x.Type},
-			{Text: x.By},
+			{Align: simpletable.AlignLeft, Text: x.By},
 			{Text: fmt.Sprintf("%d", x.Score)},
-			{Text: x.Text},
-			{Text: fmt.Sprintf("%d", x.Parent)},
 			{Text: fmt.Sprintf("%v", x.FormattedTime(x.Time))},
 			{Text: x.Title},
-			{Align: simpletable.AlignRight, Text: x.URL},
+			{Align: simpletable.AlignCenter, Text: x.URL},
 		}
 		table.Body.Cells = append(table.Body.Cells, r)
 	}
