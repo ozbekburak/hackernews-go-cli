@@ -21,6 +21,7 @@ func DisplayItem(output string, typeOfPost string, itemURL string) {
 // GetItem function returns the item that related ID
 func GetItem(itemID int64) {
 	var ItemResponse model.Item
+	var ItemResponseList []model.Item
 	itemURL := fmt.Sprintf("%s%d%s", BaseURL, itemID, ".json")
 	item, err := http.Get(itemURL)
 
@@ -36,5 +37,6 @@ func GetItem(itemID int64) {
 	if error != nil {
 		fmt.Println("Something bad happened: ", error)
 	}
-	ShowTable(ItemResponse)
+	ItemResponseList = append(ItemResponseList, ItemResponse)
+	fmt.Println(ItemResponseList)
 }
