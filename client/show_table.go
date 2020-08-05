@@ -15,7 +15,7 @@ func ShowTable(item []model.Item) {
 			{Align: simpletable.AlignCenter, Text: "ID"},
 			{Align: simpletable.AlignCenter, Text: "Type"},
 			{Align: simpletable.AlignCenter, Text: "By"},
-			{Align: simpletable.AlignCenter, Text: "Descendants"},
+
 			{Align: simpletable.AlignCenter, Text: "Score"},
 			{Align: simpletable.AlignCenter, Text: "Text"},
 			{Align: simpletable.AlignCenter, Text: "Parent"},
@@ -29,7 +29,7 @@ func ShowTable(item []model.Item) {
 			{Align: simpletable.AlignRight, Text: fmt.Sprintf("%d", x.ID)},
 			{Text: x.Type},
 			{Text: x.By},
-			{Text: fmt.Sprintf("%d", x.Descendants)},
+
 			{Text: fmt.Sprintf("%d", x.Score)},
 			{Text: x.Text},
 			{Text: fmt.Sprintf("%d", x.Parent)},

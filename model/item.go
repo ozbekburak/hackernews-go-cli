@@ -24,13 +24,14 @@ type Item struct {
 }
 
 // FormattedTime function converts epoch time to human readable format
-func (i Item) FormattedTime(epoch int64) time.Time {
+func (i Item) FormattedTime(epoch int64) int {
 	strTime := strconv.FormatInt(epoch, 10)
 	itemDate, err := strconv.ParseInt(strTime, 10, 64)
 	if err != nil {
 		panic(err)
 	}
-	return time.Unix(itemDate, 0)
+	t := time.Unix(itemDate, 0)
+	return t.Year()
 }
 
 // FormattedStory formats our response to show meaningful output to user
