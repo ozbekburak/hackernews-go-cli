@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"log"
 
 	"github.com/hackernews-go-cli/client"
 )
@@ -19,8 +18,6 @@ func main() {
 
 	if storyCount > 0 && storyCount <= 500 {
 		client.GetTopStories(storyCount)
-	} else {
-		log.Fatalln("You can fetch max 500 item!")
 	}
 
 }
