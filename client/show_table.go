@@ -23,13 +23,13 @@ func ShowTable(item []model.Item) {
 	}
 	for _, x := range item {
 		r := []*simpletable.Cell{
-			{Align: simpletable.AlignLeft, Text: fmt.Sprintf("%d", x.ID)},
+			{Text: fmt.Sprintf("%d", x.ID)},
 			{Text: x.Type},
-			{Align: simpletable.AlignLeft, Text: x.By},
+			{Text: x.By},
 			{Text: fmt.Sprintf("%d", x.Score)},
 			{Text: fmt.Sprintf("%v", x.FormattedTime(x.Time))},
 			{Text: x.Title},
-			{Align: simpletable.AlignCenter, Text: x.URL},
+			{Text: x.URL},
 		}
 		table.Body.Cells = append(table.Body.Cells, r)
 	}
