@@ -13,14 +13,10 @@ import (
 // BaseURL helps us to create customizable request
 const BaseURL = "https://hacker-news.firebaseio.com/v0/item/"
 
-// DisplayItem displays our output that fetched from last item
-func DisplayItem(output string, typeOfPost string, itemURL string) {
-	fmt.Printf("Type: %s\nURL: %s\n-----------%s", typeOfPost, itemURL, output)
-}
-
 // GetItem function returns the item that related ID
 func GetItem(itemID int64) {
 	var ItemResponse model.Item
+	// To append items to table I had to use array type argument
 	itemresponselist := []model.Item{}
 	itemURL := fmt.Sprintf("%s%d%s", BaseURL, itemID, ".json")
 	item, err := http.Get(itemURL)
