@@ -11,28 +11,31 @@ import (
 )
 
 // BaseURL helps us to create customizable request
-const BaseURL = "https://hacker-news.firebaseio.com/v0/item/"
+const BaseURL string = "https://hacker-news.firebaseio.com/v0/item/"
 
 // GetItem function returns the item that related ID
 func GetItem(itemID int64) {
-	var ItemResponse model.Item
-	// To append items to table I had to use array type argument
-	itemresponselist := []model.Item{}
 	itemURL := fmt.Sprintf("%s%d%s", BaseURL, itemID, ".json")
-	item, err := http.Get(itemURL)
+	var itemResponse model.Item
 
+	// To append items to table I had to use array type argument
+	itemResponseArray := []model.Item{}
+
+	item, err := http.Get(itemURL)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	defer item.Body.Close()
+
 	itemBody, err := ioutil.ReadAll(item.Body)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	error := json.Unmarshal(itemBody, &ItemResponse)
+
+	error := json.Unmarshal(itemBody, &itemResponse)
 	if error != nil {
 		fmt.Println("Something bad happened: ", error)
 	}
-	itemresponselist = append(itemresponselist, ItemResponse)
-	ShowTable(itemresponselist)
+	itemResponseArray = append(itemResponseArray, itemResponse)
+	ShowTable(itemResponseArray)
 }
