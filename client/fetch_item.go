@@ -38,5 +38,4 @@ func GetItem(itemID int64) []model.Item {
 	}
 	itemResponseArray = append(itemResponseArray, itemResponse)
 	return itemResponseArray
-	//ShowTable(itemResponseArray)
 }

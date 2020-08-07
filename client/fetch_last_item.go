@@ -27,5 +27,6 @@ func GetLastItem() {
 	}
 	defer response.Body.Close()
 	maxID := GetMaxItemID(*response)
-	GetItem(int64(maxID))
+	lastitem := GetItem(int64(maxID))
+	ShowTable(lastitem)
 }
