@@ -30,8 +30,7 @@ func GetLastItem() {
 		log.Fatalln(err)
 	}
 	defer response.Body.Close()
-	maxID := GetMaxItemID(*response)
-	lastitem := GetItem(int64(maxID))
+	lastitem := GetItem(int64(GetMaxItemID(*response)))
 	itemArray = append(itemArray, lastitem)
 	ShowTable(itemArray)
 
