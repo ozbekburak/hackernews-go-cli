@@ -6,6 +6,7 @@ import (
 
 	"github.com/alexeyco/simpletable"
 	"github.com/hackernews-go-cli/model"
+	"github.com/mitchellh/go-wordwrap"
 )
 
 // ShowTable creates a table with related data
@@ -30,7 +31,7 @@ func ShowTable(item []model.Item) {
 			{Text: x.By},
 			{Text: fmt.Sprintf("%d", x.Score)},
 			{Text: fmt.Sprintf("%v", x.FormattedTime(x.Time))},
-			{Text: fmt.Sprintf("%v", html.UnescapeString(x.Text))},
+			{Text: fmt.Sprintf("%v", wordwrap.WrapString(html.UnescapeString(x.Text), 100))},
 			{Text: x.Title},
 			{Text: x.URL},
 		}

@@ -19,5 +19,4 @@ func main() {
 	if storyCount > 0 && storyCount <= 500 {
 		client.GetTopStories(storyCount)
 	}
-
 }
