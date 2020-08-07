@@ -2,6 +2,7 @@ package client
 
 import (
 	"fmt"
+	"html"
 
 	"github.com/alexeyco/simpletable"
 	"github.com/hackernews-go-cli/model"
@@ -17,6 +18,7 @@ func ShowTable(item []model.Item) {
 			{Align: simpletable.AlignCenter, Text: "By"},
 			{Align: simpletable.AlignCenter, Text: "Score"},
 			{Align: simpletable.AlignCenter, Text: "Time"},
+			{Align: simpletable.AlignCenter, Text: "Text"},
 			{Align: simpletable.AlignCenter, Text: "Title"},
 			{Align: simpletable.AlignCenter, Text: "URL"},
 		},
@@ -28,6 +30,7 @@ func ShowTable(item []model.Item) {
 			{Text: x.By},
 			{Text: fmt.Sprintf("%d", x.Score)},
 			{Text: fmt.Sprintf("%v", x.FormattedTime(x.Time))},
+			{Text: fmt.Sprintf("%v", html.UnescapeString(x.Text))},
 			{Text: x.Title},
 			{Text: x.URL},
 		}
