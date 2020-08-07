@@ -9,7 +9,7 @@ import (
 func main() {
 	var storyCount int
 	getLastItem := flag.Bool("last", false, "display last post, it can be story, comment, job, poll or ask")
-	flag.IntVar(&storyCount, "top", 0, "display top stories, you can pass arguments until 500")
+	flag.IntVar(&storyCount, "top", 1, "display top stories, you can pass arguments until 500")
 	flag.Parse()
 
 	if *getLastItem {
@@ -17,6 +17,8 @@ func main() {
 	}
 
 	if storyCount > 0 && storyCount <= 500 {
-		client.GetTopStories(storyCount)
+		if !*getLastItem {
+			client.GetTopStories(storyCount)
+		}
 	}
 }
