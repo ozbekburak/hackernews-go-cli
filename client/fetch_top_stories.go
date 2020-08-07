@@ -12,7 +12,7 @@ import (
 
 // GetTopStories returns top stories
 func GetTopStories(num int) {
-	var item []model.Item
+	itemArray := []model.Item{}
 	response, err := http.Get("https://hacker-news.firebaseio.com/v0/topstories.json")
 	if err != nil {
 		log.Fatalln(err)
@@ -28,8 +28,8 @@ func GetTopStories(num int) {
 		fmt.Println("You have exceeded the max number of item, if you want to list all the item, use this as an argument: ", len(topStories))
 	} else {
 		for i := 0; i < num; i++ {
-			item = GetItem(topStories[i])
+			itemArray = append(itemArray, GetItem(topStories[i]))
 		}
-		ShowTable(item)
+		ShowTable(itemArray)
 	}
 }

@@ -5,6 +5,8 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+
+	"github.com/hackernews-go-cli/model"
 )
 
 // GetMaxItemID returns the ID of last posted item
@@ -20,6 +22,8 @@ func GetMaxItemID(response http.Response) int {
 
 // GetLastItem brings the last posted item which can be in different types like story, job, comment etc.
 func GetLastItem() {
+	itemArray := []model.Item{}
+
 	lastItemURL := "https://hacker-news.firebaseio.com/v0/maxitem.json"
 	response, err := http.Get(lastItemURL)
 	if err != nil {
@@ -28,5 +32,7 @@ func GetLastItem() {
 	defer response.Body.Close()
 	maxID := GetMaxItemID(*response)
 	lastitem := GetItem(int64(maxID))
-	ShowTable(lastitem)
+	itemArray = append(itemArray, lastitem)
+	ShowTable(itemArray)
+
 }

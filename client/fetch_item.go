@@ -14,7 +14,7 @@ import (
 const BaseURL string = "https://hacker-news.firebaseio.com/v0/item/"
 
 // GetItem function returns the item that related ID
-func GetItem(itemID int64) []model.Item {
+func GetItem(itemID int64) model.Item {
 	itemURL := fmt.Sprintf("%s%d%s", BaseURL, itemID, ".json")
 	var itemResponse model.Item
 
@@ -37,5 +37,5 @@ func GetItem(itemID int64) []model.Item {
 		fmt.Println("Something bad happened: ", error)
 	}
 	itemResponseArray = append(itemResponseArray, itemResponse)
-	return itemResponseArray
+	return itemResponseArray[0]
 }
