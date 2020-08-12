@@ -2,11 +2,11 @@ package client
 
 import (
 	"fmt"
-	"html"
+
+	"github.com/hackernews-go-cli/helper"
 
 	"github.com/alexeyco/simpletable"
 	"github.com/hackernews-go-cli/model"
-	"github.com/mitchellh/go-wordwrap"
 )
 
 // ShowTable creates a table with related data
@@ -24,6 +24,7 @@ func ShowTable(item []model.Item) {
 			{Align: simpletable.AlignCenter, Text: "URL"},
 		},
 	}
+	// wordwrap.WrapString(html.UnescapeString(x.Text), 100)
 	for _, x := range item {
 		r := []*simpletable.Cell{
 			{Text: fmt.Sprintf("%d", x.ID)},
@@ -31,7 +32,7 @@ func ShowTable(item []model.Item) {
 			{Text: x.By},
 			{Text: fmt.Sprintf("%d", x.Score)},
 			{Text: fmt.Sprintf("%v", x.FormattedTime(x.Time))},
-			{Text: fmt.Sprintf("%v", wordwrap.WrapString(html.UnescapeString(x.Text), 100))},
+			{Text: fmt.Sprintf("%v", helper.TextShortener(x.Text))},
 			{Text: x.Title},
 			{Text: x.URL},
 		}
