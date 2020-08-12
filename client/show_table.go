@@ -34,7 +34,7 @@ func ShowTable(item []model.Item) {
 			{Text: x.By},
 			{Text: fmt.Sprintf("%d", x.Score)},
 			{Text: fmt.Sprintf("%v", x.FormattedTime(x.Time))},
-			{Text: fmt.Sprintf("%v", wordwrap.WrapString(html.UnescapeString(helper.TextShortener(x.Text)), 100))},
+			{Text: fmt.Sprintf("%v", wordwrap.WrapString(html.UnescapeString(helper.TextShortener(x.Text)), 50))},
 			{Text: x.Title},
 			{Text: x.URL},
 		}
