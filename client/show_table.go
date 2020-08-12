@@ -5,10 +5,10 @@ import (
 	"html"
 
 	"github.com/hackernews-go-cli/helper"
-	"github.com/mitchellh/go-wordwrap"
+	"github.com/hackernews-go-cli/model"
 
 	"github.com/alexeyco/simpletable"
-	"github.com/hackernews-go-cli/model"
+	"github.com/mitchellh/go-wordwrap"
 )
 
 // ShowTable creates a table with related data
