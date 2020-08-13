@@ -7,8 +7,8 @@ import (
 	"time"
 )
 
-// Item struct represents the model of our response.
-type Item struct {
+// Story struct represents the model of our response.
+type Story struct {
 	By          string `json:"by"`
 	Descendants int    `json:"descendants"`
 	ID          int    `json:"id"`
@@ -24,7 +24,7 @@ type Item struct {
 }
 
 // FormattedTime function converts epoch time to human readable format
-func (i Item) FormattedTime(epoch int64) string {
+func (s Story) FormattedTime(epoch int64) string {
 	strTime := strconv.FormatInt(epoch, 10)
 	itemDate, err := strconv.ParseInt(strTime, 10, 64)
 	if err != nil {

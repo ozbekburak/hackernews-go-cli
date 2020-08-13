@@ -22,7 +22,7 @@ func GetMaxItemID(response http.Response) int {
 
 // GetLastItem brings the last posted item which can be in different types like story, job, comment etc.
 func GetLastItem() {
-	itemArray := []model.Item{}
+	itemArray := []model.Story{}
 
 	lastItemURL := "https://hacker-news.firebaseio.com/v0/maxitem.json"
 	response, err := http.Get(lastItemURL)

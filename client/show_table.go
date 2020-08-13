@@ -12,7 +12,7 @@ import (
 )
 
 // ShowTable creates a table with related data
-func ShowTable(item []model.Item) {
+func ShowTable(item []model.Story) {
 	table := simpletable.New()
 	table.Header = &simpletable.Header{
 		Cells: []*simpletable.Cell{

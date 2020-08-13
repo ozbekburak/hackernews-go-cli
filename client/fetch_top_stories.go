@@ -12,7 +12,7 @@ import (
 
 // GetTopStories returns top stories
 func GetTopStories(num int) {
-	itemArray := []model.Item{}
+	itemArray := []model.Story{}
 	response, err := http.Get("https://hacker-news.firebaseio.com/v0/topstories.json")
 	if err != nil {
 		log.Fatalln(err)

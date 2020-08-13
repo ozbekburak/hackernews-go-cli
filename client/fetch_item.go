@@ -14,12 +14,12 @@ import (
 const BaseURL string = "https://hacker-news.firebaseio.com/v0/item/"
 
 // GetItem function returns the item that related ID
-func GetItem(itemID int64) model.Item {
+func GetItem(itemID int64) model.Story {
 	itemURL := fmt.Sprintf("%s%d%s", BaseURL, itemID, ".json")
-	var itemResponse model.Item
+	var itemResponse model.Story
 
 	// To append items to table I had to use array type argument
-	itemResponseArray := []model.Item{}
+	itemResponseArray := []model.Story{}
 
 	item, err := http.Get(itemURL)
 	if err != nil {
