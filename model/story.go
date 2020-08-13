@@ -14,9 +14,6 @@ type Story struct {
 	ID          int    `json:"id"`
 	Kids        []int  `json:"kids"`
 	Score       int    `json:"score"`
-	Text        string `json:"text"`
-	Parts       []int  `json:"parts"`
-	Parent      int    `json:"parent"`
 	Time        int64  `json:"time"`
 	Title       string `json:"title"`
 	Type        string `json:"type"`
