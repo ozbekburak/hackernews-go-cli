@@ -22,15 +22,16 @@ func main() {
 	flag.Parse()
 
 	if storyNum > 0 && storyNum <= 500 {
-		client.GetStories(storyNum, "story")
+		client.GetStories(storyNum, "Story")
 	}
 	if askNum > 0 && askNum <= 200 {
-		client.GetStories(askNum, "ask")
+		client.GetStories(askNum, "Ask")
 	}
 	if jobNum > 0 && jobNum <= 200 {
-		client.GetStories(jobNum, "job")
+		client.GetStories(jobNum, "Job")
 	}
+	// Show HN completely same as ordinary story
 	if showNum > 0 && showNum <= 200 {
-		client.GetStories(showNum, "show")
+		client.GetStories(showNum, "Story")
 	}
 }
