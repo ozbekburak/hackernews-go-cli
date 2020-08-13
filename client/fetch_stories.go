@@ -10,8 +10,8 @@ import (
 	"github.com/hackernews-go-cli/model"
 )
 
-// GetTopStories returns top stories
-func GetTopStories(num int) {
+// GetStories returns top stories
+func GetStories(num int, storyType string) {
 	itemArray := []model.Story{}
 	response, err := http.Get("https://hacker-news.firebaseio.com/v0/topstories.json")
 	if err != nil {
