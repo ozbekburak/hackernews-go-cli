@@ -14,10 +14,10 @@ var (
 )
 
 func main() {
-	flag.IntVar(&storyNum, "top", 1, "display top stories, you can pass arguments until 500")
-	flag.IntVar(&askNum, "ask", 1, "display ask stories, you can pass arguments until 200")
-	flag.IntVar(&jobNum, "job", 1, "display job stories, you can pass arguments until 200")
-	flag.IntVar(&showNum, "show", 1, "display job stories, you can pass arguments until 200")
+	flag.IntVar(&storyNum, "top", 0, "display top stories, you can pass arguments until 500")
+	flag.IntVar(&askNum, "ask", 0, "display ask stories, you can pass arguments until 200")
+	flag.IntVar(&jobNum, "job", 0, "display job stories, you can pass arguments until 200")
+	flag.IntVar(&showNum, "show", 0, "display job stories, you can pass arguments until 200")
 
 	flag.Parse()
 
