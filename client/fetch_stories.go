@@ -10,10 +10,13 @@ import (
 	"github.com/hackernews-go-cli/model"
 )
 
+const baseStoryURL = "https://hacker-news.firebaseio.com/v0/"
+
 // GetStories returns top stories
 func GetStories(num int, storyType string) {
+	storyURL := fmt.Sprintf("%s%s%s", baseStoryURL, storyType, ".json")
 	itemArray := []model.Story{}
-	response, err := http.Get("https://hacker-news.firebaseio.com/v0/topstories.json")
+	response, err := http.Get(storyURL)
 	if err != nil {
 		log.Fatalln(err)
 	}
