@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 
 	"github.com/hackernews-go-cli/client"
 )
@@ -22,7 +23,9 @@ func main() {
 	flag.Parse()
 
 	if storyNum > 0 && storyNum <= 500 {
+
 		client.GetStories(storyNum, "topstories")
+		fmt.Println(storyNum)
 	}
 	if askNum > 0 && askNum <= 200 {
 		client.GetStories(askNum, "askstories")

@@ -35,6 +35,6 @@ func GetStories(num int, storyType string) {
 		for i := 0; i < num; i++ {
 			itemArray = append(itemArray, GetItem(topStories[i]))
 		}
-		ShowTable(itemArray)
+		ShowTable(itemArray, storyType)
 	}
 }
