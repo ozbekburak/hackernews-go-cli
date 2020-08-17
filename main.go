@@ -15,6 +15,7 @@ var (
 )
 
 func main() {
+	// maybe it can be done with sub-commands
 	flag.IntVar(&storyNum, "top", 1, "display top stories, you can pass arguments until 500")
 	flag.IntVar(&askNum, "ask", 1, "display ask stories, you can pass arguments until 200")
 	flag.IntVar(&jobNum, "job", 1, "display job stories, you can pass arguments until 200")
