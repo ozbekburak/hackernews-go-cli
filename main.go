@@ -24,17 +24,17 @@ func main() {
 
 	if storyNum > 0 && storyNum <= 500 {
 
-		client.GetStories(storyNum, "topstories")
+		client.FetchStories(storyNum, "topstories")
 		fmt.Println(storyNum)
 	}
 	if askNum > 0 && askNum <= 200 {
-		client.GetStories(askNum, "askstories")
+		client.FetchStories(askNum, "askstories")
 	}
 	if jobNum > 0 && jobNum <= 200 {
-		client.GetStories(jobNum, "jobstories")
+		client.FetchStories(jobNum, "jobstories")
 	}
 	if showNum > 0 && showNum <= 200 {
-		client.GetStories(showNum, "showstories")
+		client.FetchStories(showNum, "showstories")
 	}
 
 }

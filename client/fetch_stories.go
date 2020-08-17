@@ -12,8 +12,8 @@ import (
 
 const baseStoryURL = "https://hacker-news.firebaseio.com/v0/"
 
-// GetStories returns top stories
-func GetStories(num int, storyType string) {
+// FetchStories return top stories
+func FetchStories(num int, storyType string) {
 	storyURL := fmt.Sprintf("%s%s%s", baseStoryURL, storyType, ".json")
 	var itemArray []model.Story
 
