@@ -7,3 +7,8 @@ func TextShortener(text string) string {
 	}
 	return text
 }
+
+/*
+	it had written for fetching last-item
+	not used in the code
+*/
