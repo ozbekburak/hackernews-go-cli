@@ -14,7 +14,7 @@ func ShowTable(item []model.Story, storyType string) {
 	table.Header = &simpletable.Header{
 		Cells: []*simpletable.Cell{
 			{Align: simpletable.AlignCenter, Text: "Type"},
-			{Align: simpletable.AlignCenter, Text: "ID"},
+			//{Align: simpletable.AlignCenter, Text: "ID"},
 			{Align: simpletable.AlignCenter, Text: "By"},
 			{Align: simpletable.AlignCenter, Text: "Score"},
 			{Align: simpletable.AlignCenter, Text: "Time"},
@@ -26,7 +26,7 @@ func ShowTable(item []model.Story, storyType string) {
 	for _, x := range item {
 		r := []*simpletable.Cell{
 			{Text: fmt.Sprintf("%s", storyType)},
-			{Text: fmt.Sprintf("%d", x.ID)},
+			//{Text: fmt.Sprintf("%d", x.ID)},
 			{Text: x.By},
 			{Text: fmt.Sprintf("%d", x.Score)},
 			{Text: fmt.Sprintf("%v", x.FormattedTime(x.Time))},
