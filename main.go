@@ -30,7 +30,6 @@ func main() {
 	if jobNum > 0 && jobNum <= 200 {
 		client.GetStories(jobNum, "jobstories")
 	}
-	// Show HN completely same as ordinary story
 	if showNum > 0 && showNum <= 200 {
 		client.GetStories(showNum, "showstories")
 	}
