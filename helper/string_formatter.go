@@ -10,5 +10,5 @@ func TextShortener(text string) string {
 
 /*
 	it had written for fetching last-item
-	not used in the code
+	not used in the curretn code
 */
