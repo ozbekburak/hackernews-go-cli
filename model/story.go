@@ -1,7 +1,6 @@
 package model
 
 import (
-
 	// html.UnescapeString unescapes entities like "&lt;" to become "<".
 	"strconv"
 	"time"
@@ -28,5 +27,5 @@ func (s Story) FormattedTime(epoch int64) string {
 		panic(err)
 	}
 	t := time.Unix(itemDate, 0)
-	return t.Format("2006-01-02 15:04:05")
+	return t.Format("15:04")
 }
