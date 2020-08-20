@@ -23,3 +23,7 @@ developed using the [hacker news api](https://github.com/HackerNews/API) for tho
     $ go build -o hackernews-go-cli
     $ ./hackernews-go-cli -top 5
 ```
+
+Inline-style: 
+![Installation and Usage](https://github.com/ozbekburak/hackernews-go-cli/blob/master/assets/usage-gif.gif)
+
