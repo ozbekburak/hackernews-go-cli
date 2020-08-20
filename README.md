@@ -28,16 +28,16 @@ developed using the [hacker news api](https://github.com/HackerNews/API) for tho
     $ ./hackernews-go-cli -top 5
 ```
 
-or
+> or
 
 ```
-    $ ./hackerknews-go-cli -show 10
-```
-
-```
-    $ ./hackerknews-go-cli -ask 10
+    $ ./hackerknews-go-cli -show 92
 ```
 
 ```
-    $ ./hackerknews-go-cli -ask 10
+    $ ./hackerknews-go-cli -ask 125
+```
+
+```
+    $ ./hackerknews-go-cli -job 75
 ```
