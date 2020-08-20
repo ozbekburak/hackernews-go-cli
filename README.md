@@ -15,8 +15,6 @@ top stories from [Hacker News](https://news.ycombinator.com/) like
 
 developed using the [hacker news api](https://github.com/HackerNews/API) for those who don't like to leave the command-line screen.
 
-
-
 ```
     $ git clone https://github.com/ozbekburak/hackernews-go-cli.git
     $ cd hackernews-go-cli
@@ -24,5 +22,4 @@ developed using the [hacker news api](https://github.com/HackerNews/API) for tho
     $ ./hackernews-go-cli -top 5
 ```
 
-
-#### Installation and Usage
+### Installation and Usage
