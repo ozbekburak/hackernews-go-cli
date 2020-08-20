@@ -13,8 +13,7 @@ top stories from [Hacker News](https://news.ycombinator.com/) like
 
 * job stories
 
-developed using the [hacker news api](https://github.com/HackerNews/API)
-for those who don't like to leave the command-line screen.
+developed using the [hacker news api](https://github.com/HackerNews/API) for those who don't like to leave the command-line screen.
 
 ### Installation and Usage
 
