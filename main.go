@@ -34,8 +34,8 @@ func main() {
 	}
 	if showNum > 0 && showNum <= 200 {
 		client.FetchStories(showNum, "showstories")
-	} else if storyNum <= 0 && askNum <= 0 && jobNum <= 0 && showNum <= 0 {
-		fmt.Println("No argument found! Please use --help to see which flags you can use!")
+	} else if (storyNum <= 0 || storyNum > 500) || (askNum <= 0 || askNum > 200) || (jobNum <= 0 || jobNum > 200) || (showNum <= 0 || showNum > 200) {
+		fmt.Println("No argument found or you exceed the max number! use --help to learn more")
 	}
 
 }
